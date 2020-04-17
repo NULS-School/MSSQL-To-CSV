@@ -1,0 +1,6 @@
+.vs/
+**/obj/Debug/
+**/obj/Release/
+
+*.dll
+*.exe

@@ -1,2 +1,2 @@
 # MSSQL-To-CSV
-A simple program that connects to an MSSQL server and outputs the query data as CSV
+A simple system to login, query and dump MSSQL data to a CSV
