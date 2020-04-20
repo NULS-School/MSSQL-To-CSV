@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SIMSExport;
 
-
+using CSVIO;
 
 /*
  * Parameters
@@ -65,8 +65,7 @@ namespace SIMSExport
                 Console.WriteLine("Exported " + Results.GetRowCount() + " records");            
             }
 
-
-
+            
 
 
         }

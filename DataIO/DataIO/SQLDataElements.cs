@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace SIMSExport
+namespace CSVIO
 {
 
     public class ObjDataRow
@@ -32,6 +32,27 @@ namespace SIMSExport
         {
             Object[] O = Elements.ToArray();
             return (O);
+        }
+
+
+        public bool Equals(ObjDataRow B, bool CaseSensitive)
+        {
+            if (Elements.Count() == B.Elements.Count())
+                for (Int32 I = 0; I < Elements.Count(); I++)
+                {
+                    if (!CaseSensitive)
+                    {
+                        if (!Elements[I].ToString().ToUpper().Equals(B.Elements[I].ToString().ToUpper()))
+                            return (false);
+                    }
+                    else
+                    {
+                        if (!Elements[I].Equals(B.Elements[I]))
+                            return (false);
+                    }
+                }
+
+        return (true);
         }
     }
 
@@ -72,6 +93,15 @@ namespace SIMSExport
 
         public Int32 GetColumnCount()
         {
+            if (Headers.Count() == 0)
+                if (Rows.Count() > 0)
+                    return (Rows[0].GetRowData().Count());
+
+            return (Headers.Count());
+        }
+
+        public Int32 GetHeaderCount()
+        {
             return (Headers.Count());
         }
 
@@ -89,6 +119,25 @@ namespace SIMSExport
         {
             Rows.Add(oRow);
             return (true);
+        }
+
+
+        public bool Contains(ObjDataRow R, bool CaseSensitive)
+        {
+        if(HasRow(R, CaseSensitive))
+            return (true);
+
+        return (false);
+        }
+
+        private bool HasRow(ObjDataRow R, bool CaseSensitive)
+        {
+            for (Int32 I = 0; I < Rows.Count(); I++)
+            {
+                if(Rows[I].Equals(R,CaseSensitive))
+                    return (true);
+            }
+        return (false);
         }
 
     }
