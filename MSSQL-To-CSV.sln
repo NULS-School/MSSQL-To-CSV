@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVDiff", "CSVDiff\CSVDiff.
 		{B7F464C2-6784-45DA-9E2E-AA33D819D4B8} = {B7F464C2-6784-45DA-9E2E-AA33D819D4B8}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVExtract", "CSVExtract\CSVExtract.csproj", "{322F3574-8C77-4553-AF60-B96A9C0E6F07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{643F6728-8F58-49FC-B8FC-381051072FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{643F6728-8F58-49FC-B8FC-381051072FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{643F6728-8F58-49FC-B8FC-381051072FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{322F3574-8C77-4553-AF60-B96A9C0E6F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{322F3574-8C77-4553-AF60-B96A9C0E6F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{322F3574-8C77-4553-AF60-B96A9C0E6F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{322F3574-8C77-4553-AF60-B96A9C0E6F07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

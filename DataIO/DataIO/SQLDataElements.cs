@@ -105,6 +105,16 @@ namespace CSVIO
             return (Headers.Count());
         }
 
+        public String[] GetHeaders()
+        {
+            List<String> S = new List<string>();
+
+            for (Int32 I = 0; I < Headers.Count(); I++)
+                S.Add(Headers[I].Key);
+
+            return (S.ToArray());
+        }
+
         public Int32 GetRowCount()
         {
             return (Rows.Count());
