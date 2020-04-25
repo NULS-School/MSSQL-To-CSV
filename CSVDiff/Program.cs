@@ -13,7 +13,6 @@ namespace CSVDiff
     {
         static void Main(string[] args)
         {
-
             //Compare 2 CSV files
             //Output the differences (either removed or added)
             ObjDataSet A,B;
@@ -60,7 +59,7 @@ namespace CSVDiff
             //One way only
 
             ObjDataSet OutputA = DataIO.Diff(A, B, false);
-            Console.WriteLine(sFileOne + " has " + OutputA.GetRowCount() + " additionl records ");
+            Console.WriteLine(sFileOne + " has " + OutputA.GetRowCount() + " additional records ");
             DataIO.Write(OutputA, OutputFile[0]);
             if (Echo)
                 DataIO.Dump(OutputA);
@@ -68,8 +67,8 @@ namespace CSVDiff
             if(TwoWay)
                 {
                 ObjDataSet OutputB = DataIO.Diff(B, A, false);
-                Console.WriteLine("\n" + sFileTwo + " has " + OutputB.GetRowCount() + " additionl records ");
-                DataIO.Write(OutputB, OutputFile[0]);
+                Console.WriteLine("\n" + sFileTwo + " has " + OutputB.GetRowCount() + " additional records ");
+                DataIO.Write(OutputB, OutputFile[1]);
                 if (Echo)
                     DataIO.Dump(OutputB);
                 }

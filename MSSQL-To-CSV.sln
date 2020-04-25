@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVDiff", "CSVDiff\CSVDiff.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVExtract", "CSVExtract\CSVExtract.csproj", "{322F3574-8C77-4553-AF60-B96A9C0E6F07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVMerge", "CSVMerge\CSVMerge.csproj", "{77BC3087-32C2-4541-ADFF-BD40B2587A53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{322F3574-8C77-4553-AF60-B96A9C0E6F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{322F3574-8C77-4553-AF60-B96A9C0E6F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{322F3574-8C77-4553-AF60-B96A9C0E6F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77BC3087-32C2-4541-ADFF-BD40B2587A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77BC3087-32C2-4541-ADFF-BD40B2587A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77BC3087-32C2-4541-ADFF-BD40B2587A53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77BC3087-32C2-4541-ADFF-BD40B2587A53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

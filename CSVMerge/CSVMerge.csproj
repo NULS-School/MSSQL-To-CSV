@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{322F3574-8C77-4553-AF60-B96A9C0E6F07}</ProjectGuid>
+    <ProjectGuid>{77BC3087-32C2-4541-ADFF-BD40B2587A53}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CSVExtract</RootNamespace>
-    <AssemblyName>CSVExtract</AssemblyName>
+    <RootNamespace>CSVMerge</RootNamespace>
+    <AssemblyName>CSVMerge</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,10 +51,6 @@
     <ProjectReference Include="..\DataIO\DataIO\DataIO.csproj">
       <Project>{b7f464c2-6784-45da-9e2e-aa33d819d4b8}</Project>
       <Name>DataIO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MSSQL-To-CSV\MSSQL-To-CSV.csproj">
-      <Project>{54f87874-e7e4-46c9-81fd-880c83c15fb1}</Project>
-      <Name>MSSQL-To-CSV</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

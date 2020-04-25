@@ -34,6 +34,11 @@ namespace CSVIO
             return (O);
         }
 
+        public Object GetRowElement(Int32 index)
+        {
+            return(Elements[index]);
+        }
+
 
         public bool Equals(ObjDataRow B, bool CaseSensitive)
         {
@@ -78,6 +83,24 @@ namespace CSVIO
             Headers.Add(K);
             return (false);
         }
+
+        public bool ReplaceHeader(String sOld, String sNew)
+        {
+
+            KeyValuePair<String, Type> OldValue = new KeyValuePair<string, Type>(sOld, null);
+            KeyValuePair<String, Type> NewValue = new KeyValuePair<string, Type>(sNew, null);
+
+            Int32 Position = Headers.IndexOf(OldValue);
+
+            if (Position >= 0)
+            {
+                Headers[Position] = NewValue;
+                return (true);
+            }
+
+        return (false);
+        }
+
 
         public string GetHeaderName(Int32 index)
         {

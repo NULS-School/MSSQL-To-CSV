@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace CSVIO
 {
 
+
     //Deal with object Dataset and read/write from CSV files
     //Params:
     //Filename      - Input filename
@@ -15,6 +16,11 @@ namespace CSVIO
 
     public class DataIO
     {
+
+        private const Int32 SUCCESS = 0;
+        private const Int32 FAILURE = -1;
+
+
         public static bool Read(String Filename, out ObjDataSet FileStruct, bool header)
         {
             FileStruct = null;
@@ -156,17 +162,25 @@ namespace CSVIO
 
             for (Int32 I = 0; I < A.GetHeaderCount(); I++)
             {
-                Console.Write(A.GetHeaderName(I) + "\t");
+                Console.Write(A.GetHeaderName(I));
+                if (I < A.GetColumnCount())
+                    Console.Write(",");
+
             }
             Console.WriteLine("");
 
             for (Int32 I = 0; I < A.GetRowCount(); I++)
             {
                 ObjDataRow R = A.GetRow(I);
-                
+
+                Int32 Elementcnt=1;
                 foreach (String S in A.GetRow(I).GetRowData())
                 {
-                    Console.Write(S + "\t");
+                    Console.Write(S);
+                    if (Elementcnt < A.GetColumnCount())
+                        Console.Write(",");
+
+                    Elementcnt++;
                 }
             Console.WriteLine("");
                 
@@ -215,6 +229,93 @@ namespace CSVIO
 
             
         return (Result);
+        }
+
+
+
+        public static Int32 GetHeaderIndex(ObjDataSet A, String HeaderName)
+        {
+            for (Int32 I = 0; I < A.GetHeaderCount(); I++)
+            {
+                if (A.GetHeaderName(I).ToUpper() == HeaderName.ToUpper())
+                    return (I);
+            }
+
+        return (FAILURE);
+        }
+
+
+        /* Merge two tables
+         * Take all columns from A and B
+         * Use A as the master index
+         * Merge fields based on lookups between field A1 and B1
+         */
+
+
+        private static ObjDataRow FindRow(ObjDataSet A, Int32 cIndex, string Value)
+        {
+            ObjDataRow R = null;
+
+            for (Int32 I = 0; I < A.GetRowCount(); I++)
+            {
+                R = A.GetRow(I);
+                Object O = R.GetRowElement(cIndex);
+                if (O.ToString().ToUpper() == Value.ToUpper())
+                    return (R);           
+            }
+
+        return (null);
+        }
+
+
+        public static ObjDataSet Merge(ObjDataSet A, ObjDataSet B, String aFieldName,String bFieldname)
+        {
+            ObjDataSet Result = new ObjDataSet();
+
+            Int32 aIndex = GetHeaderIndex(A, aFieldName);
+            Int32 bIndex = GetHeaderIndex(A, aFieldName);
+
+            //Need to merge headers - excluding the index from B
+            //Add the Headers from A
+            for (Int32 I = 0; I < A.GetHeaderCount(); I++)
+                Result.AddHeader(A.GetHeaderName(I), null);
+        
+
+            //Add the headers from B
+            for (Int32 I = 0; I < B.GetHeaderCount(); I++)
+            {
+                if(I != bIndex)
+                    Result.AddHeader(B.GetHeaderName(I),null);
+            }
+
+
+            //Merge the data
+
+            for (Int32 I = 0; I < A.GetRowCount(); I++)
+            {
+                ObjDataRow AR = A.GetRow(I);
+                String AData = AR.GetRowElement(aIndex).ToString();
+
+                ObjDataRow BR = FindRow(B, bIndex, AData);
+                if (BR != null)
+                {
+                    List<Object> NewRowData = new List<Object>();
+                    Object[] ExistingRowData = BR.GetRowData();
+
+                    for (Int32 J = 0; J < ExistingRowData.Count(); J++)
+                    {
+                        if(J != bIndex)
+                            NewRowData.Add(ExistingRowData[J]);
+                    }
+                    AR.Add(NewRowData.ToArray());
+                    Result.Add(AR);
+                }
+
+            }
+
+
+            
+            return (Result);
         }
 
 
